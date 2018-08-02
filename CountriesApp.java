@@ -66,10 +66,10 @@ public class CountriesApp {
 	private static void addCountry(ArrayList<Country> countries) {
 		String addCountry="";
 		addCountry = Validator.getString(sc, "Enter a Country to be added: ");
-		Country newCountry = new Country(addCountry);
+		Country newCountry = new Country(addCountry.trim());
 		countries.add(newCountry);
 		CountriesTextFile.appendLine(newCountry);
-		System.out.println("\n"+addCountry+" has been added!");
+		System.out.println("\n"+addCountry.trim()+" has been added!");
 	}
 	
 	// removes the data chosen by the user and updates the file and the ArrayList as well
@@ -82,11 +82,11 @@ public class CountriesApp {
 		}else {
 			countries = CountriesTextFile.readFile();
 			for(int i = 0; i<countries.size();i++) {
-				if(countries.get(i).getNameOfCountry().equalsIgnoreCase(removeCountry)) {
+				if(countries.get(i).getNameOfCountry().equalsIgnoreCase(removeCountry.trim())) {
 					countries.remove(i);
 				}
 			}
-			System.out.println("\n"+removeCountry.toUpperCase() +" has been removed!");
+			System.out.println("\n"+removeCountry.trim().toUpperCase() +" has been removed!");
 			CountriesTextFile.writeFile(countries);
 			
 		}
